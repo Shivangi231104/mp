@@ -1,51 +1,84 @@
-# Introduction to GitHub
+# 🛡️ Network Penetration Testing with Real-World Exploits and Security Remediation
 
-_Get started using GitHub in less than an hour._
-
-## Welcome
-
-People use GitHub to build some of the most advanced technologies in the world. Whether you’re visualizing data or building a new game, there’s a whole community and set of tools on GitHub that can help you do it even better. GitHub Skills’ “Introduction to GitHub” exercise guides you through everything you need to start contributing in less than an hour.
-
-- **Who is this for**: New developers, new GitHub users, and students.
-- **What you'll learn**: We'll introduce repositories, branches, commits, and pull requests.
-- **What you'll build**: We'll make a short Markdown file you can use as your [profile README](https://docs.github.com/account-and-profile/setting-up-and-managing-your-github-profile/customizing-your-profile/managing-your-profile-readme).
-- **Prerequisites**: None. This exercise is a great introduction for your first day on GitHub.
-- **How long**: This exercise takes less than one hour to complete.
-
-In this exercise, you will:
-
-1. Create a branch
-2. Commit a file
-3. Open a pull request
-4. Merge your pull request
-
-### How to start this exercise
-
-1. Right-click **Copy Exercise** and open the link in a new tab.
-
-   <a id="copy-exercise">
-      <img src="https://img.shields.io/badge/📠_Copy_Exercise-AAA" height="25pt"/>
-   </a>
-
-2. In the new tab, most of the prompts will automatically fill in for you.
-   - For owner, choose your personal account or an organization to host the repository.
-   - We recommend creating a public repository, as private repositories will [use Actions minutes](https://docs.github.chttps://github.com/Shivangi231104/mp/billing/managing-billing-for-github-actions/about-billing-for-github-actions).
-   - Scroll down and click the **Create repository** button at the bottom of the form.
-
-3. After your new repository is created, wait about 20 seconds for the exercise to be prepared and buttons updated. You will continue working from your copy of the exercise.
-   - The **Copy Exercise** button will deactivate, changing to gray.
-   - The **Start Exercise** button will activate, changing to green.
-   - You will likely need to refresh the page.
-
-4. Click **Start Exercise**. Follow the step-by-step instructions and feedback will be provided as you progress.
-
-   <a id="start-exercise" href="https://github.com/Shivangi231104/mp/issues/1">
-      <img src="https://img.shields.io/badge/🚀_Start_Exercise-008000" height="25pt"/>
-   </a>
-
-> [!IMPORTANT]
-> The **Start Exercise** button will activate after copying the repository. You will probably need to refresh the page.
+This project simulates real-world network attacks and defense strategies using Kali Linux as the attacker machine and Metasploitable as the target. It includes scanning, enumeration, exploitation, password cracking, and remediation — all performed in a controlled lab environment for ethical learning purposes.
 
 ---
 
-&copy; 2025 GitHub &bull; [Code of Conduct](https://www.contributor-covenant.org/version/2/1/code_of_conduct/code_of_conduct.md) &bull; [MIT License](https://gh.io/mit)
+                                                  
+
+
+## 🎯 Objectives
+
+- Understand and simulate real-world network attacks
+- Perform scanning, enumeration, and exploitation using tools like Nmap and Metasploit
+- Crack Linux password hashes using John the Ripper
+- Identify outdated services and recommend security remediations
+
+---
+
+## 💻 Lab Setup
+
+### 🖥️ Operating Systems
+- **Kali Linux** – Attacker Machine
+- **Metasploitable 2** – Target Machine
+
+### 🛠️ Tools Used
+- `nmap` – Port, OS, and service version scanning
+- `Metasploit` – Exploitation
+- `John the Ripper` – Password hash cracking
+- Linux built-in commands – user management and enumeration
+
+---
+
+## 🚀 Tasks Performed
+
+### 🔍 Network Scanning
+- `nmap -v IP` – Basic scan
+- `nmap -v -p- IP` – Full port scan
+- `nmap -sV IP` – Service version detection
+- `nmap -O IP` – OS detection
+
+### 🔐 Hidden Ports Discovered
+Ports like `8787`, `36588`, `53204`, etc., found through full port scans.
+
+### 📡 Enumeration
+- OS: Linux 2.6.x (Metasploitable)
+- Open services: vsftpd, OpenSSH, Apache, MySQL, Samba, etc.
+- Vulnerable ports: 21 (FTP), 445 (SMB), 512–514 (R Services)
+
+### 💥 Exploitation
+- **vsftpd 2.3.4** backdoor
+- **SMB 3.0.20-Debian** using Metasploit
+- **Rexec/Rlogin/Rsh** services using script-based vulnerabilities
+
+### 👤 Privilege Escalation
+- Created user `rahul` with root permissions
+- Extracted and cracked password hash using John the Ripper
+
+### 🔧 Remediation Steps
+| Service   | Vulnerability                  | Fix                              |
+|-----------|--------------------------------|----------------------------------|
+| vsftpd    | Backdoor (CVE-2011-2523)       | Upgrade to 3.0.5 / use SFTP      |
+| SMB       | RCE, Null Sessions             | Upgrade to Samba 4.20.1          |
+| R Services| Plaintext creds (CVE-1999-0651)| Disable & use SSH instead        |
+
+---
+
+## 📚 Major Learning
+
+Through this project, I learned how to create and manage users in Linux, analyze system files, crack password hashes, and detect services using Nmap. I practiced using commands like `nmap -sV`, `nmap -O`, and `john` to identify system weaknesses. I also understood how outdated services like FTP, SMB, and R services pose serious security risks and how to patch or replace them.
+
+---
+
+## ⚠️ Disclaimer
+
+This project is for **educational purposes only**. All activities were performed in a **safe, offline lab environment**. Do not attempt these techniques on real networks without explicit permission.
+
+---
+
+## 📎 References
+
+- [CVE-2011-2523](https://nvd.nist.gov/vuln/detail/CVE-2011-2523)
+- [Metasploit Documentation](https://docs.rapid7.com/metasploit/)
+- [John the Ripper](https://www.openwall.com/john/)
+- [Apache Vulnerabilities](https://httpd.apache.org/security/)
